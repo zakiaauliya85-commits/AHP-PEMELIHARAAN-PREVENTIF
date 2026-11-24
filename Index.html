@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pemeliharaan Preventif Struktur Gedung MST</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e6e8e5;--sf:#f6f6f3;--ink:#1b2430;--mut:#5a6572;--ln:#cdd1d4;--ac:#1f4e79;--acx:#fff;--sig:#f2b705;--ok:#2e7d4f;--wn:#a96d0a;--bd:#b3361f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181d;--sf:#1c2229;--ink:#e6e9ec;--mut:#9aa5b1;--ln:#2f3943;--ac:#7fb0dd;--acx:#0f1a24;--ok:#5fc58a;--wn:#e0a540;--bd:#f0806a}}
+:root[data-theme="dark"]{--bg:#14181d;--sf:#1c2229;--ink:#e6e9ec;--mut:#9aa5b1;--ln:#2f3943;--ac:#7fb0dd;--acx:#0f1a24;--ok:#5fc58a;--wn:#e0a540;--bd:#f0806a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+header{padding:20px 20px 0;max-width:1000px;margin:auto}
+.brand{font:600 13px "IBM Plex Sans",sans-serif;color:var(--mut)}
+nav{display:flex;gap:4px;overflow-x:auto;margin-top:12px;border-bottom:2px solid var(--ln)}
+nav a{padding:9px 14px;color:var(--mut);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;font-weight:500}
+nav a.on{color:var(--ink);border-color:var(--sig)}
+nav a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+main{max-width:1000px;margin:auto;padding:20px}
+h1{font:600 clamp(26px,5vw,38px)/1.15 "IBM Plex Serif",Georgia,serif;margin:0 0 10px;max-width:22ch}
+h2{font:600 20px/1.3 "IBM Plex Serif",Georgia,serif;margin:0 0 6px}
+h3{font-size:15px;margin:18px 0 6px}
+p{margin:0 0 12px;max-width:68ch}.mut{color:var(--mut)}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:16px;margin-bottom:16px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}
+.stat{flex:1 1 130px;border-left:4px solid var(--sig);padding:2px 12px}.stat b{display:block;font:600 28px "IBM Plex Serif",serif}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--ln);vertical-align:middle}
+th{font-weight:600;color:var(--mut);font-size:13px}
+.chip{display:inline-block;padding:1px 9px;border-radius:99px;border:1px solid currentColor;font-size:13px;font-weight:500;white-space:nowrap}
+.c0,.bad{color:var(--bd)}.c1,.warn{color:var(--wn)}.c2,.good{color:var(--ok)}
+button,.btn{font:500 14px "IBM Plex Sans",sans-serif;padding:7px 14px;border-radius:5px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);cursor:pointer}
+button.p{background:var(--ac);color:var(--acx);border-color:var(--ac)}
+button.sm{padding:3px 10px;font-size:13px}
+input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--ln);border-radius:5px;background:var(--bg);color:var(--ink);max-width:100%}
+label{display:block;font-weight:500;font-size:13px;margin:10px 0 3px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.row>div{flex:1 1 180px}.row input,.row select{width:100%}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pr{display:grid;grid-template-columns:1fr minmax(170px,1.2fr) 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--ln)}
+.pr span:last-child{text-align:right}
+@media(max-width:560px){.pr{grid-template-columns:1fr}.pr span:last-child{text-align:left}}
+.bar{height:8px;background:var(--ln);border-radius:4px;min-width:80px}.bar i{display:block;height:100%;background:var(--ac);border-radius:4px}
+.note{border-left:4px solid var(--sig);padding:6px 12px;background:var(--sf);margin:12px 0;max-width:68ch}
+footer{max-width:1000px;margin:auto;padding:0 20px 30px;color:var(--mut);font-size:13px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:6px;display:none}
+@media(prefers-reduced-motion:no-preference){main{animation:in .25s ease-out}@keyframes in{from{opacity:.4}}}
+</style>
+</head>
+<body>
+<header><div class="brand">Politeknik Negeri Semarang, Teknik Perawatan dan Perbaikan Gedung</div>
+<nav id="nav"></nav></header>
+<main id="main"></main>
+<footer>Prototype penelitian oleh Yossi Melliyanti dan Zakia Auliya. Data tersimpan di browser ini saja. Nilai awal pada matriks AHP hanyalah contoh dan perlu diganti dengan penilaian pakar.</footer>
+<div id="toast" role="status"></div>
+<script>
+const KR=[["k1","K1 Biaya","Besar biaya perawatan dan perbaikan bila elemen rusak"],["k2","K2 Keamanan","Akibat bagi keselamatan pengguna dan kestabilan gedung bila elemen rusak"],["k3","K3 Waktu","Lama waktu pelaksanaan perawatan dan perbaikan elemen"],["k4","K4 Pengaruh konstruksi","Pengaruh kerusakan atau pekerjaan perbaikan elemen terhadap elemen struktur lain dan operasional gedung"]];
+const RI=[0,0,0,.58,.9,1.12,1.24,1.32,1.41,1.45,1.49],IV=[3,6,12],CN=["Tinggi","Sedang","Rendah"],STN=["Terjadwal","Segera","Terlambat"];
+const PAGES=[["beranda","Beranda"],["elemen","Data elemen"],["ahp","Perbandingan AHP"],["hasil","Hasil prioritas"],["jadwal","Jadwal"],["catat","Catat pengecekan"],["riwayat","Riwayat"]];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const today=()=>iso(new Date());
+const addM=(s,m)=>{const d=new Date(s+"T00:00:00");d.setMonth(d.getMonth()+m);return iso(d)};
+const dd=(a,b)=>Math.round((new Date(a+"T00:00:00")-new Date(b+"T00:00:00"))/864e5);
+const fd=s=>new Date(s+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"});
+const f3=x=>x.toFixed(3).replace(".",",");
+const chip=(t,c)=>`<span class="chip ${c}">${t}</span>`;
+let S,tab="kr";
+function seed(){
+ const el=["Kolom","Balok","Pelat lantai","Tangga"].map((n,i)=>({id:"e"+(i+1),n,loc:"Semua lantai"}));
+ const base={k1:[8,7,5,3],k2:[9,7,5,3],k3:[6,6,5,3],k4:[8,7,6,2]};
+ const pw={kr:{k1_k2:-2,k1_k3:2,k1_k4:2,k2_k3:3,k2_k4:3,k3_k4:1}};
+ for(const k in base){pw[k]={};for(let i=0;i<4;i++)for(let j=i+1;j<4;j++){const r=base[k][i]/base[k][j];pw[k][el[i].id+"_"+el[j].id]=r>=1?Math.round(r):-Math.round(1/r)||1;if(Math.abs(pw[k][el[i].id+"_"+el[j].id])<2)pw[k][el[i].id+"_"+el[j].id]=1}}
+ return{el,pw,log:[],th:{hi:.27,mid:.2},start:today(),n:5}}
+function load(){try{S=JSON.parse(localStorage.getItem("ahp-mst-v2"))}catch(e){}if(!S)S=seed()}
+function save(){try{localStorage.setItem("ahp-mst-v2",JSON.stringify(S))}catch(e){}}
+function toast(t){const e=$("#toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display="none",2200)}
+function pair(m,a,b){const v=(S.pw[m]||{})[a+"_"+b];return v===undefined?1:v}
+function ahp(ids,m){const n=ids.length;
+ const A=ids.map((_,i)=>ids.map((_,j)=>{if(i==j)return 1;const v=i<j?pair(m,ids[i],ids[j]):pair(m,ids[j],ids[i]);const r=v>0?v:1/-v;return i<j?r:1/r}));
+ const cs=ids.map((_,j)=>A.reduce((s,r)=>s+r[j],0));
+ const w=A.map(r=>r.reduce((s,x,j)=>s+x/cs[j],0)/n);
+ const lmax=cs.reduce((s,c,j)=>s+c*w[j],0);
+ const ci=n>2?(lmax-n)/(n-1):0;return{w,lmax,ci,cr:n>2?ci/RI[Math.min(n,10)]:0}}
+function calc(){const ki=KR.map(k=>k[0]),ids=S.el.map(e=>e.id);
+ const K=ahp(ki,"kr"),E=ki.map(k=>ahp(ids,k));
+ const sc=ids.map((_,j)=>ki.reduce((s,_,i)=>s+K.w[i]*E[i].w[j],0));
+ return{K,E,sc,cat:sc.map(x=>x>=S.th.hi?0:x>=S.th.mid?1:2)}}
+function sched(){const c=calc();return S.el.map((e,j)=>{
+ const last=S.log.filter(l=>l.eid===e.id).sort((a,b)=>b.date.localeCompare(a.date))[0];
+ let ci=c.cat[j];const worse=last&&last.cond==="Buruk";if(worse)ci=Math.max(0,ci-1);
+ const due=addM(last?last.date:S.start,IV[ci]),days=dd(due,today());
+ return{e,score:c.sc[j],cat:c.cat[j],ci,worse,last,due,days,st:days<0?2:days<=14?1:0}}).sort((a,b)=>a.days-b.days)}
+const stc=s=>["c2","c1","c0"][s];
+function pw(m,items){let h="";for(let i=0;i<items.length;i++)for(let j=i+1;j<items.length;j++){
+ const a=items[i],b=items[j],v=pair(m,a[0],b[0]);
+ h+=`<div class="pr"><span>${esc(a[1])}</span><select aria-label="${esc(a[1])} dibanding ${esc(b[1])}" onchange="setP('${m}','${a[0]}_${b[0]}',this.value)">`+
+ [9,8,7,6,5,4,3,2,1,-2,-3,-4,-5,-6,-7,-8,-9].map(x=>`<option value="${x}"${x==v?" selected":""}>${x==1?"Sama penting (1)":x>0?"Kiri lebih penting ("+x+")":"Kanan lebih penting ("+(-x)+")"}</option>`).join("")+`</select><span>${esc(b[1])}</span></div>`}
+ return h||'<p class="mut">Tambahkan minimal dua elemen untuk membuat perbandingan.</p>'}
+function crChip(r){return chip("CR "+f3(r.cr)+(r.cr<=.1?" konsisten":" tinjau ulang"),r.cr<=.1?"c2":"c0")}
+const V={
+beranda(){const sc=sched();const n=sc.filter(x=>x.st==2).length;
+ return `<h1>Jadwal pengecekan struktur Gedung Magister Terapan</h1>
+ <p>Elemen struktur diberi bobot dengan AHP, lalu bobot itu menentukan seberapa sering elemen diperiksa: tiap 3 bulan, 6 bulan, atau 1 tahun.</p>
+ <div class="stats"><div class="stat"><b>${S.el.length}</b>elemen struktur</div><div class="stat"><b>${sc.filter(x=>x.cat==0).length}</b>prioritas tinggi</div><div class="stat"><b class="${n?"bad":""}">${n}</b>pengecekan terlambat</div><div class="stat"><b>${S.log.length}</b>catatan pengecekan</div></div>
+ <div class="card"><h2>Jatuh tempo terdekat</h2>${sc.length?`<div class="tw"><table><tr><th>Elemen</th><th>Prioritas</th><th>Jatuh tempo</th><th>Status</th><th></th></tr>${sc.slice(0,4).map(x=>`<tr><td>${esc(x.e.n)}</td><td>${chip(CN[x.cat],"c"+x.cat)}</td><td>${fd(x.due)}</td><td>${chip(STN[x.st],stc(x.st))}</td><td><button class="sm" onclick="goLog('${x.e.id}')">Catat</button></td></tr>`).join("")}</table></div>`:'<p class="mut">Belum ada elemen. Mulai dari halaman Data elemen.</p>'}</div>
+ <div class="card"><h2>Alur penggunaan</h2><p>Isi data elemen, nilai perbandingan berpasangan, lihat hasil prioritas, cek jadwal, lalu catat setiap pengecekan di lapangan. Bila hasil pengecekan Buruk, interval elemen dipersingkat satu tingkat.</p></div>`},
+elemen(){return `<h2>Data elemen struktur</h2><p class="mut">Elemen yang diperiksa pada gedung objek penelitian.</p>
+ <div class="card tw"><table><tr><th>Elemen</th><th>Lokasi</th><th></th></tr>${S.el.map(e=>`<tr><td>${esc(e.n)}</td><td>${esc(e.loc)}</td><td><button class="sm" onclick="delEl('${e.id}')">Hapus</button></td></tr>`).join("")}</table></div>
+ <div class="card"><h3 style="margin-top:0">Tambah elemen</h3><div class="row"><div><label for="en">Nama elemen</label><input id="en" placeholder="Contoh: Sloof"></div><div><label for="el">Lokasi</label><input id="el" placeholder="Contoh: Lantai 1"></div><div style="flex:0 0 auto"><button class="p" onclick="addEl()">Tambah elemen</button></div></div></div>`},
+ahp(){const ids=S.el.map(e=>e.id);let items,m=tab,r;
+ if(m=="kr"){items=KR.map(k=>[k[0],k[1]]);r=ahp(items.map(x=>x[0]),"kr")}else{items=S.el.map(e=>[e.id,e.n]);r=ahp(ids,m)}
+ return `<h2>Perbandingan berpasangan</h2><p class="mut">Skala Saaty 1 sampai 9. Pilih elemen mana yang lebih penting dan seberapa kuat.</p>
+ <div class="tabs">${[["kr","Kriteria"]].concat(KR.map(k=>[k[0],k[1]])).map(t=>`<button class="${t[0]==m?"on":""}" onclick="tab='${t[0]}';go()">${t[1]}</button>`).join("")}</div>
+ <div class="card"><h3 style="margin-top:0">${m=="kr"?"Kriteria terhadap tujuan: prioritas pengecekan":"Elemen menurut "+KR.find(k=>k[0]==m)[1]}</h3>${m!="kr"?`<p class="mut">${KR.find(k=>k[0]==m)[2]}</p>`:""}${pw(m,items)}
+ <h3>Bobot</h3><div class="tw"><table><tr><th>Item</th><th>Bobot</th><th></th></tr>${items.map((x,i)=>`<tr><td>${esc(x[1])}</td><td>${f3(r.w[i])}</td><td style="width:40%"><div class="bar"><i style="width:${r.w[i]*100}%"></i></div></td></tr>`).join("")}</table></div>
+ <p style="margin-top:12px">λmaks ${f3(r.lmax)}, CI ${f3(r.ci)} ${crChip(r)}</p></div>`},
+hasil(){const c=calc(),ord=S.el.map((e,j)=>j).sort((a,b)=>c.sc[b]-c.sc[a]),mx=Math.max(...c.sc,.0001);
+ const bad=[["Kriteria",c.K]].concat(KR.map((k,i)=>[k[1],c.E[i]])).filter(x=>x[1].cr>.1);
+ return `<h2>Hasil prioritas AHP</h2><p class="mut">Skor akhir Sj = Σ (bobot kriteria × bobot elemen pada kriteria itu).</p>
+ ${bad.length?`<div class="note bad">Rasio konsistensi di atas 0,1 pada: ${bad.map(x=>esc(x[0])).join(", ")}. Mintalah pakar meninjau ulang penilaian.</div>`:""}
+ <div class="card"><h3 style="margin-top:0">Bobot kriteria</h3><div class="tw"><table>${KR.map((k,i)=>`<tr><td>${k[1]}</td><td>${f3(c.K.w[i])}</td></tr>`).join("")}</table></div></div>
+ <div class="card tw"><table><tr><th>Peringkat</th><th>Elemen</th><th>Skor akhir</th><th></th><th>Kategori</th><th>Interval</th></tr>${ord.map((j,i)=>`<tr><td>${i+1}</td><td>${esc(S.el[j].n)}</td><td>${f3(c.sc[j])}</td><td style="width:22%"><div class="bar"><i style="width:${c.sc[j]/mx*100}%"></i></div></td><td>${chip(CN[c.cat[j]],"c"+c.cat[j])}</td><td>Setiap ${IV[c.cat[j]]} bulan</td></tr>`).join("")}</table></div>
+ <div class="card"><h3 style="margin-top:0">Batas kategori</h3><div class="row"><div><label for="th1">Tinggi bila skor ≥</label><input id="th1" type="number" step="0.01" min="0" max="1" value="${S.th.hi}" onchange="setT('hi',this.value)"></div><div><label for="th2">Sedang bila skor ≥</label><input id="th2" type="number" step="0.01" min="0" max="1" value="${S.th.mid}" onchange="setT('mid',this.value)"></div></div><p class="mut" style="margin-top:10px">Di bawah batas Sedang masuk kategori Rendah. Sesuaikan dengan pedoman pemeliharaan dan masukan ahli.</p></div>`},
+jadwal(){const sc=sched();return `<h2>Jadwal pengecekan rutin</h2><p class="mut">Jatuh tempo dihitung dari pengecekan terakhir. Elemen yang belum pernah dicek dihitung dari tanggal mulai.</p>
+ <div class="card"><label for="st" style="margin-top:0">Tanggal mulai pemeliharaan</label><input id="st" type="date" value="${S.start}" onchange="S.start=this.value;save();go()"></div>
+ <div class="card tw"><table><tr><th>Elemen</th><th>Kategori</th><th>Interval</th><th>Terakhir dicek</th><th>Jatuh tempo</th><th>Status</th><th></th></tr>${sc.map(x=>`<tr><td>${esc(x.e.n)}</td><td>${chip(CN[x.cat],"c"+x.cat)}</td><td>${IV[x.ci]} bulan${x.worse?' <span class="bad" title="Hasil pengecekan terakhir Buruk">(dipersingkat)</span>':""}</td><td>${x.last?fd(x.last.date)+" ("+x.last.cond+")":"Belum ada"}</td><td>${fd(x.due)}</td><td>${chip(STN[x.st],stc(x.st))} <span class="mut">${x.days<0?-x.days+" hari lewat":x.days+" hari lagi"}</span></td><td><button class="sm" onclick="goLog('${x.e.id}')">Catat</button></td></tr>`).join("")}</table></div>`},
+catat(){return `<h2>Catat hasil pengecekan</h2><p class="mut">Hasil pengecekan menggeser jadwal berikutnya.</p>
+ <div class="card"><div class="row"><div><label for="le">Elemen</label><select id="le">${S.el.map(e=>`<option value="${e.id}"${e.id==S.sel?" selected":""}>${esc(e.n)}</option>`).join("")}</select></div><div><label for="ld">Tanggal pengecekan</label><input id="ld" type="date" value="${today()}"></div></div>
+ <div class="row"><div><label for="lc">Kondisi elemen</label><select id="lc"><option>Baik</option><option>Sedang</option><option>Buruk</option></select></div><div><label for="lk">Jenis kerusakan</label><select id="lk"><option>Tidak ada</option><option>Retak</option><option>Korosi tulangan</option><option>Beton terkelupas</option><option>Lendutan</option></select></div></div>
+ <label for="ln">Deskripsi dan lokasi temuan</label><textarea id="ln" rows="3" style="width:100%"></textarea><p style="margin-top:12px"><button class="p" onclick="addLog()">Simpan pengecekan</button></p></div>`},
+riwayat(){const L=S.log.slice().sort((a,b)=>b.date.localeCompare(a.date));return `<h2>Riwayat pengecekan</h2>`+(L.length?`<div class="card tw"><table><tr><th>Tanggal</th><th>Elemen</th><th>Kondisi</th><th>Kerusakan</th><th>Catatan</th><th></th></tr>${L.map(l=>`<tr><td>${fd(l.date)}</td><td>${esc(l.en)}</td><td>${chip(l.cond,l.cond=="Buruk"?"c0":l.cond=="Sedang"?"c1":"c2")}</td><td>${esc(l.dmg)}</td><td>${esc(l.note||"-")}</td><td><button class="sm" onclick="delLog('${l.id}')">Hapus</button></td></tr>`).join("")}</table></div>`:`<p class="mut">Belum ada catatan. Simpan pengecekan pertama di halaman Catat pengecekan.</p><p><a class="btn" href="#catat">Catat pengecekan</a></p>`)}
+};
+function setP(m,k,v){(S.pw[m]=S.pw[m]||{})[k]=+v;save();go()}
+function setT(k,v){S.th[k]=+v;save();toast("Batas kategori disimpan")}
+function addEl(){const n=$("#en").value.trim();if(!n){toast("Isi nama elemen");return}S.el.push({id:"e"+(++S.n),n,loc:$("#el").value.trim()||"-"});save();go();toast("Elemen ditambahkan")}
+function delEl(id){S.el=S.el.filter(e=>e.id!=id);save();go();toast("Elemen dihapus")}
+function addLog(){const e=S.el.find(x=>x.id==$("#le").value);if(!e||!$("#ld").value){toast("Pilih elemen dan tanggal");return}
+ S.log.push({id:"l"+Date.now(),eid:e.id,en:e.n,date:$("#ld").value,cond:$("#lc").value,dmg:$("#lk").value,note:$("#ln").value.trim()});save();location.hash="riwayat";toast("Pengecekan disimpan")}
+function delLog(id){S.log=S.log.filter(l=>l.id!=id);save();go();toast("Catatan dihapus")}
+function goLog(id){S.sel=id;location.hash="catat"}
+function go(){const h=location.hash.slice(1),p=PAGES.some(x=>x[0]==h)?h:"beranda";
+ $("#nav").innerHTML=PAGES.map(x=>`<a href="#${x[0]}"${x[0]==p?' class="on" aria-current="page"':""}>${x[1]}</a>`).join("");
+ $("#main").innerHTML=V[p]()}
+window.addEventListener("hashchange",()=>{go();scrollTo(0,0)});
+load();go();
+</script>
+</body>
+</html>
